@@ -1,0 +1,54 @@
+body {
+    font-family: Times New Roman, SimSun;
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: Times New Roman, SimSun;
+    margin-top: 75px;
+}
+
+h1 {
+    font-size: 40px;
+}
+
+h2 {
+    font-size: 35px;
+}
+
+h3 {
+    font-size: 32px;
+}
+
+h4 {
+    font-size: 28px;
+}
+
+h5 {
+    font-size: 25px;
+}
+
+.post-title {
+    font-size: 50px;
+}
+
+ul, li {
+    font-family: "Rekha", SimSun;
+    font-size: 20px;
+}
+
+.more {
+    font-family: SimSun;
+    font-size: 20px;
+}
+
+
+a:link {
+    color:#3C3C3C;
+    text-decoration: none;
+}
+
+a:visited {
+    color:#3C3C3C;
+    text-decoration:none;
+}
+
