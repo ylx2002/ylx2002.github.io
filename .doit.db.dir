@@ -37,7 +37,7 @@
 'copy_assets:output\\assets\\css\\baguetteBox.min.css', (31232, 493)
 'copy_assets:output\\assets\\css\\rst_base.css', (31744, 480)
 'create_bundles:output\\assets\\js\\all.js', (32256, 364)
-'sitemap:output\\sitemap.xml', (80384, 11360)
+'sitemap:output\\sitemap.xml', (80384, 11358)
 'create_bundles:output\\assets\\css\\all.css', (33792, 861)
 'render_taxonomies:output\\rss.xml', (167424, 5947)
 'create_bundles', (35328, 56)
