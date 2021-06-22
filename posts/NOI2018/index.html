@@ -214,28 +214,28 @@ bool cmp(node1 aa, node1 bb)
 <span class="p">}</span>
 </pre>
 <h3>冒泡排序</h3>
-<p>$f_{i,j}$ 表示填了 $i$ 个位置后，最大的数是 $j$ 到达最终状态的方案数。初始状态：$f_{n,n}=1$
-$$
-f_{i,j}=[i+1\le j]f_{i+1,j}+\sum _{k=j+1}^n f_{i+1,k}\
+<p>$f_{i,j}$ 表示填了 $i$ 个位置后，最大的数是 $j$ 到达最终状态的方案数。初始状态：$f_{n,n}=1$</p>
+<p>$$
+f_{i,j}=[i+1\le j]f_{i+1,j}+\sum _{k=j+1}^n f_{i+1,k}\\
 =[i+1\le j]f_{i+1,j}+f_{i,j+1}
-$$
-时间复杂度 $O(n^2)$  ，期望得分 $80$</p>
+$$</p>
+<p>时间复杂度 $O(n^2)$  ，期望得分 $80$</p>
 <p>翻转一下下标 $i$ -&gt; $n-i$ ，得到 $F_{0,0}=1$</p>
 <p>$$
 F_{i,j}=[i-1\ge j] F_{i-1,j}+F_{i,j-1}
-$$
-发现是<code>Catalan</code> 数</p>
+$$</p>
+<p>发现是<code>Catalan</code> 数</p>
 <p>$$
 F_{i,j}={i+j\choose j}-{i+j\choose j-1}
-$$
-然后我们枚举 $i$ 表示前 $i-1$ 位是卡着上限的。</p>
+$$</p>
+<p>然后我们枚举 $i$ 表示前 $i-1$ 位是卡着上限的。</p>
 <p>假设前面都是合法的。</p>
 <p>$p$ 表示这一位最小的合法状态，直接和前面的所有数取Max然后+1。</p>
-<p>方案就是
-$$
-\sum_{k=p}^n f_{i,k}\
-=\sum_{k=0}^{n-p} F_{n-i,k}\
-=\sum_{k=0}^{n-p} {n-i+k\choose k}-{n-i+k\choose k-1}\
+<p>方案就是</p>
+<p>$$
+\sum_{k=p}^n f_{i,k}\\
+=\sum_{k=0}^{n-p} F_{n-i,k}\\
+=\sum_{k=0}^{n-p} {n-i+k\choose k}-{n-i+k\choose k-1}\\
 =\sum_{k=0}^{n-p} {n-i+k\choose k}-\sum_{k=0}^{n-p}{n-i+k\choose k-1}
 $$</p>
 <p>这东西是可以拆的。</p>
