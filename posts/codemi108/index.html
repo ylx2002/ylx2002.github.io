@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html prefix="" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>CodeMi 108 猜数字 | SUNRISE</title>
+<link href="../../assets/css/rst.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/code.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/theme.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="../../assets/css/main.css">
+<link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300%7CMontserrat:700" rel="stylesheet" type="text/css">
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+<script src="//code.jquery.com/jquery-1.10.2.min.js"></script><link href="../../assets/css/custom.css" rel="stylesheet" type="text/css">
+<meta name="theme-color" content="#5670d4">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
+<link rel="canonical" href="https://ylx2002.github.io/posts/codemi108/">
+<!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="yilanxuan">
+<link rel="prev" href="../gxgzoi2019/" title="GXOIGZOI2019 围观" type="text/html">
+<link rel="next" href="../2019GCJ1C/" title="Google Code Jam Round 1C 翻车记" type="text/html">
+<meta property="og:site_name" content="SUNRISE">
+<meta property="og:title" content="CodeMi 108 猜数字">
+<meta property="og:url" content="https://ylx2002.github.io/posts/codemi108/">
+<meta property="og:description" content="经典题。
+
+
+传送门
+题意
+相传，十八世纪的数学家喜欢玩一种猜数字的小游戏，规则如下： 首先裁判选定一个正整数数字 N(2≤N≤200)，然后选择两个不同的整数 X,Y(1≤X≤Y≤N) 裁判告诉玩家S这两个数字的和；告诉玩家P这两个数字的乘积 由玩家S开始，双方依次告诉裁判自己是否知道X, Y分别是多少，如果有一方知道，那么游戏就结束了！
+例如，裁判先选定 N=10 并将 N 的值告诉玩家，然后">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2019-05-02T15:30:00+08:00">
+<meta property="article:tag" content="思维">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" integrity="sha384-yFRtMMDnQtDRO8rLpMIKrtPCD5jdktao2TV19YiZYWMDkUR5GQZR/NOVTdquEx1j" crossorigin="anonymous">
+</head>
+<body><main><!--[if lt IE 7]><p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chrome/‎">install Google Chrome</a> to experience this site.</p><![endif]--><header id="site-header"><div class="container">
+            <h1 class="blog-title heading">SUNRISE</h1>
+            <p class="blog-description">We all wait for the sunrise.</p>
+        </div>
+        
+    <header id="header"><nav id="menu"><ul>
+<li><a href="../../">Home</a></li>
+                <li><a href="../../pages/about">About</a></li>
+                <li><a href="../../archive.html">Archive</a></li>
+                <li><a href="../../categories/">Categories</a></li>
+                <li><a href="../../pages/friends">Friends</a></li>
+
+    
+
+    
+    
+    </ul></nav></header></header><main class="content" role="main"><div class="container">
+
+            
+<article class="post"><header class="post-header"><h3 class="p-post-title">CodeMi 108 猜数字</h3>
+    </header><section class="post-content"><div>
+<p>经典题。</p>
+<!-- TEASER_END:  -->
+
+<p><a href="https://code.mi.com/problem/list/view?id=108">传送门</a></p>
+<h3>题意</h3>
+<p>相传，十八世纪的数学家喜欢玩一种猜数字的小游戏，规则如下： 首先裁判选定一个正整数数字 N(2≤N≤200)，然后选择两个不同的整数 X,Y(1≤X≤Y≤N) 裁判告诉玩家S这两个数字的和；告诉玩家P这两个数字的乘积 由玩家S开始，双方依次告诉裁判自己是否知道X, Y分别是多少，如果有一方知道，那么游戏就结束了！</p>
+<p>例如，裁判先选定 N=10 并将 N 的值告诉玩家，然后从 1～N 中选择X=3,Y=6，并将它们的总和9告诉给玩家S，将它们的乘积18告诉给玩家P：</p>
+<p>玩家S：“我不知道这些数字”</p>
+<p>玩家P：“我不知道这些数字”</p>
+<p>玩家S：“我不知道这些数字”</p>
+<p>玩家P：“我不知道这些数字”</p>
+<p>玩家S：“哦，我知道这些数字了，他们是3和6”</p>
+<p>数学家们都非常的聪明，他们总能用最少的次数推断出这些数字。</p>
+<p>现在给定 N 和 M  (0≤M≤100)，M为玩家回答“我不知道这些数字”的次数，请你给出裁判选择的X,Y的组合有多少种？</p>
+<h3>做法</h3>
+<p>枚举这两个数字是什么，然后模拟过程。</p>
+<p>A 有一些可能状态，可以求出这些可能状态需要多少次推出来。</p>
+<p>我们这样可以记忆化。</p>
+<p>当然也可以逆着来。我们先把 0 次可以求出来的状态全给找出来，然后在其他里面删除这个状态。</p>
+<p>然后重复这个过程。</p>
+<h3>代码</h3>
+<pre class="code literal-block"><span></span><code><span class="cp">#define pr pair&lt;int, int&gt;</span>
+<span class="cp">#define fi first</span>
+<span class="cp">#define se second</span>
+<span class="cp">#define mp make_pair</span>
+<span class="k">const</span> <span class="kt">int</span> <span class="n">maxm</span> <span class="o">=</span> <span class="mi">200</span><span class="o">*</span><span class="mi">200</span><span class="o">+</span><span class="mi">10</span><span class="p">;</span>
+<span class="k">const</span> <span class="kt">int</span> <span class="n">maxn</span> <span class="o">=</span> <span class="mi">402</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">;</span>
+<span class="n">set</span><span class="o">&lt;</span><span class="n">pr</span><span class="o">&gt;</span> <span class="n">a</span><span class="p">[</span><span class="n">maxn</span><span class="p">];</span>
+<span class="n">set</span><span class="o">&lt;</span><span class="n">pr</span><span class="o">&gt;</span> <span class="n">b</span><span class="p">[</span><span class="n">maxm</span><span class="p">];</span>
+<span class="kt">int</span> <span class="n">f</span><span class="p">[</span><span class="n">maxn</span><span class="p">][</span><span class="n">maxn</span><span class="p">];</span>
+<span class="kt">int</span> <span class="n">sza</span><span class="p">[</span><span class="n">maxn</span><span class="p">],</span> <span class="n">szb</span><span class="p">[</span><span class="n">maxm</span><span class="p">];</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">read</span><span class="p">(),</span> <span class="n">m</span> <span class="o">=</span> <span class="n">read</span><span class="p">();</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">a</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="n">j</span><span class="p">].</span><span class="n">insert</span><span class="p">(</span><span class="n">mp</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">));</span>
+            <span class="n">b</span><span class="p">[</span><span class="n">i</span> <span class="o">*</span> <span class="n">j</span><span class="p">].</span><span class="n">insert</span><span class="p">(</span><span class="n">mp</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">));</span>
+            <span class="n">sza</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="n">j</span><span class="p">]</span><span class="o">++</span><span class="p">;</span>
+            <span class="n">szb</span><span class="p">[</span><span class="n">i</span> <span class="o">*</span> <span class="n">j</span><span class="p">]</span><span class="o">++</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="n">memset</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="mi">-1</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">f</span><span class="p">));</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">T</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">T</span> <span class="o">&lt;=</span> <span class="n">m</span><span class="p">;</span> <span class="n">T</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">T</span> <span class="o">&amp;</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span> <span class="o">*</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">szb</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+                    <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="nl">v</span> <span class="p">:</span> <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+                    <span class="p">{</span>
+                        <span class="n">x</span> <span class="o">=</span> <span class="n">v</span><span class="p">.</span><span class="n">fi</span><span class="p">;</span>
+                        <span class="n">y</span> <span class="o">=</span> <span class="n">v</span><span class="p">.</span><span class="n">se</span><span class="p">;</span>
+                        <span class="k">if</span> <span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">]</span> <span class="o">==</span> <span class="mi">-1</span><span class="p">)</span>
+                        <span class="p">{</span>
+                            <span class="n">f</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="n">T</span><span class="p">;</span>
+                            <span class="n">sza</span><span class="p">[</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">]</span><span class="o">--</span><span class="p">;</span>
+                            <span class="n">szb</span><span class="p">[</span><span class="n">x</span> <span class="o">*</span> <span class="n">y</span><span class="p">]</span><span class="o">--</span><span class="p">;</span>
+                            <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">clear</span><span class="p">();</span>
+                            <span class="n">a</span><span class="p">[</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">].</span><span class="n">erase</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">].</span><span class="n">find</span><span class="p">(</span><span class="n">mp</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)));</span>
+                            <span class="k">break</span><span class="p">;</span>
+                        <span class="p">}</span>
+                    <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="k">else</span>
+        <span class="p">{</span>
+            <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span> <span class="o">+</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">sza</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+                <span class="p">{</span>
+                    <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="nl">v</span> <span class="p">:</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+                    <span class="p">{</span>
+                        <span class="n">x</span> <span class="o">=</span> <span class="n">v</span><span class="p">.</span><span class="n">fi</span><span class="p">;</span>
+                        <span class="n">y</span> <span class="o">=</span> <span class="n">v</span><span class="p">.</span><span class="n">se</span><span class="p">;</span>
+                        <span class="k">if</span> <span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">]</span> <span class="o">==</span> <span class="mi">-1</span><span class="p">)</span>
+                        <span class="p">{</span>
+                            <span class="n">f</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="n">T</span><span class="p">;</span>
+                            <span class="n">sza</span><span class="p">[</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">]</span><span class="o">--</span><span class="p">;</span>
+                            <span class="n">szb</span><span class="p">[</span><span class="n">x</span> <span class="o">*</span> <span class="n">y</span><span class="p">]</span><span class="o">--</span><span class="p">;</span>
+                            <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">clear</span><span class="p">();</span>
+                            <span class="n">b</span><span class="p">[</span><span class="n">x</span> <span class="o">*</span> <span class="n">y</span><span class="p">].</span><span class="n">erase</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="n">x</span> <span class="o">*</span> <span class="n">y</span><span class="p">].</span><span class="n">find</span><span class="p">(</span><span class="n">mp</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)));</span>
+                            <span class="k">break</span><span class="p">;</span>
+                        <span class="p">}</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="n">ll</span> <span class="n">ans</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="n">m</span><span class="p">)</span>
+                <span class="n">ans</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">write</span><span class="p">(</span><span class="n">ans</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+ </section><hr>
+<footer class="post-footer"><section class="f-1"><section class="author"><p>
+                yilanxuan
+            </p></section><p class="f-post-time"><time datetime="2019-05-02T15:30:00+08:00">2019-05-02 15:30</time></p>
+        </section><section class="f-2"><section class="share"><span>Share:
+                <a class="icon-twitter" href="http://twitter.com/share?text=CodeMi+108+%E7%8C%9C%E6%95%B0%E5%AD%97&amp;url=https%3A%2F%2Fylx2002.github.io%2Fposts%2Fcodemi108%2F" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <i class="fa fa-twitter"></i>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fylx2002.github.io%2Fposts%2Fcodemi108%2F" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <i class="fa fa-facebook"></i>
+                </a>
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=https%3A%2F%2Fylx2002.github.io%2Fposts%2Fcodemi108%2F" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <i class="fa fa-google-plus"></i>
+                </a>
+                </span>
+            </section></section><script src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.js" integrity="sha384-9Nhn55MVVN0/4OFx7EE5kpFBPsEMZxKTCnA+4fqDmg12eCTqGi6+BB2LjY8brQxJ" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"></script><script>
+                renderMathInElement(document.body,
+                    {
+                        
+delimiters: [
+    {left: "$$", right: "$$", display: true},
+    {left: "\\[", right: "\\]", display: true},
+    {left: "$", right: "$", display: false},
+    {left: "\\(", right: "\\)", display: false}
+]
+
+                    }
+                );
+            </script></footer></article>
+</div>
+</main><footer id="site-footer"><div class="container">
+            <p>Contents © 2021         <a href="mailto:ylxredbag@qq.com">yilanxuan</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         </p>
+            
+        </div>
+    </footer></main></body>
+</html>

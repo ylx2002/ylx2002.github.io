@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html prefix="" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>Google Code Jam Round 1A 乱做 | SUNRISE</title>
+<link href="../../assets/css/rst.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/code.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/theme.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="../../assets/css/main.css">
+<link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300%7CMontserrat:700" rel="stylesheet" type="text/css">
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+<script src="//code.jquery.com/jquery-1.10.2.min.js"></script><link href="../../assets/css/custom.css" rel="stylesheet" type="text/css">
+<meta name="theme-color" content="#5670d4">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
+<link rel="canonical" href="https://ylx2002.github.io/posts/2019GCJ1A/">
+<!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="yilanxuan">
+<link rel="prev" href="../HNOI2019/" title="长沙理工大学春游记" type="text/html">
+<link rel="next" href="../gym102082/" title="GYM 102082 乱做" type="text/html">
+<meta property="og:site_name" content="SUNRISE">
+<meta property="og:title" content="Google Code Jam Round 1A 乱做">
+<meta property="og:url" content="https://ylx2002.github.io/posts/2019GCJ1A/">
+<meta property="og:description" content="装作自己打了。
+
+
+传送门
+A
+题意
+给你一个 $n\times m$ 的长方形棋盘，你需要在棋盘中构造出这么一条哈密尔顿路径（注意：不是回路），使得路径上任何相邻两个节点不在同一行、不在同一列，且不在同一对角线上。
+Limits
+Time limit: 20 seconds per test set.
+Memory limit: 1GB.
+Test set 1 (Visible)
+T = 16.">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2019-04-13T11:30:00+08:00">
+<meta property="article:tag" content="构造">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" integrity="sha384-yFRtMMDnQtDRO8rLpMIKrtPCD5jdktao2TV19YiZYWMDkUR5GQZR/NOVTdquEx1j" crossorigin="anonymous">
+</head>
+<body><main><!--[if lt IE 7]><p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chrome/‎">install Google Chrome</a> to experience this site.</p><![endif]--><header id="site-header"><div class="container">
+            <h1 class="blog-title heading">SUNRISE</h1>
+            <p class="blog-description">We all wait for the sunrise.</p>
+        </div>
+        
+    <header id="header"><nav id="menu"><ul>
+<li><a href="../../">Home</a></li>
+                <li><a href="../../pages/about">About</a></li>
+                <li><a href="../../archive.html">Archive</a></li>
+                <li><a href="../../categories/">Categories</a></li>
+                <li><a href="../../pages/friends">Friends</a></li>
+
+    
+
+    
+    
+    </ul></nav></header></header><main class="content" role="main"><div class="container">
+
+            
+<article class="post"><header class="post-header"><h3 class="p-post-title">Google Code Jam Round 1A 乱做</h3>
+    </header><section class="post-content"><div>
+<p>装作自己打了。</p>
+<!-- TEASER_END:  -->
+
+<p><a href="https://codingcompetitions.withgoogle.com/codejam/round/0000000000051635">传送门</a></p>
+<h3>A</h3>
+<h4>题意</h4>
+<p>给你一个 $n\times m$ 的长方形棋盘，你需要在棋盘中构造出这么一条哈密尔顿路径（注意：不是回路），使得路径上任何相邻两个节点不在同一行、不在同一列，且不在同一对角线上。</p>
+<p>Limits</p>
+<p>Time limit: 20 seconds per test set.</p>
+<p>Memory limit: 1GB.</p>
+<p>Test set 1 (Visible)</p>
+<p>T = 16.</p>
+<p>2 ≤ R ≤ 5.</p>
+<p>2 ≤ C ≤ 5.</p>
+<p>Test set 2 (Hidden)</p>
+<p>1 ≤ T ≤ 100.</p>
+<p>2 ≤ R ≤ 20.</p>
+<p>2 ≤ C ≤ 20.</p>
+<p>Sample</p>
+<p>Input </p>
+<pre class="code literal-block"><span></span><code><span class="mf">2</span>
+<span class="mf">2</span> <span class="mf">2</span>
+<span class="mf">2</span> <span class="mf">5</span>
+</code></pre>
+
+<p>Output </p>
+<pre class="code literal-block"><span></span><code>Case #1: IMPOSSIBLE
+Case #2: POSSIBLE
+2 3
+1 1
+2 4
+1 2
+2 5
+1 3
+2 1
+1 5
+2 2
+1 4
+</code></pre>
+
+<h4>做法</h4>
+<p><del>不考虑随机搜索。</del></p>
+<p>根据 Dirac 定理可以知道， $nm-2n-2m&gt; \frac{n}{2}$ 的时候一定有解。</p>
+<p>n&lt;=5,m&lt;=5 的时候跑暴力。</p>
+<p>若有一边为 2 的倍数，且另一边长度 &gt;=5 ，则可以如下图一样构造。</p>
+<p><img alt="" src="../../images/1.jpg"></p>
+<p>设 n&lt;=m，还有n为奇数的情况，可知 m&gt;=5。</p>
+<p>对n分类讨论，</p>
+<p>n=1 肯定无解，n&gt;=5 可以拆成 3+2x (x为任意正整数），先放偶数的，奇数的结束位置太迷了。</p>
+<p>n=3 的情况如图。</p>
+<p><img alt="" src="../../images/2.jpg"></p>
+<p>只有搜索的情况才会出无解。</p>
+<h4>代码</h4>
+<h3>B</h3>
+<h4>题意</h4>
+<h4>做法</h4>
+<h4>代码</h4>
+<h3>C</h3>
+<h4>题意</h4>
+<h4>做法</h4>
+<h4>代码</h4>
+</div>
+ </section><hr>
+<footer class="post-footer"><section class="f-1"><section class="author"><p>
+                yilanxuan
+            </p></section><p class="f-post-time"><time datetime="2019-04-13T11:30:00+08:00">2019-04-13 11:30</time></p>
+        </section><section class="f-2"><section class="share"><span>Share:
+                <a class="icon-twitter" href="http://twitter.com/share?text=Google+Code+Jam+Round+1A+%E4%B9%B1%E5%81%9A&amp;url=https%3A%2F%2Fylx2002.github.io%2Fposts%2F2019GCJ1A%2F" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <i class="fa fa-twitter"></i>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fylx2002.github.io%2Fposts%2F2019GCJ1A%2F" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <i class="fa fa-facebook"></i>
+                </a>
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=https%3A%2F%2Fylx2002.github.io%2Fposts%2F2019GCJ1A%2F" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <i class="fa fa-google-plus"></i>
+                </a>
+                </span>
+            </section></section><script src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.js" integrity="sha384-9Nhn55MVVN0/4OFx7EE5kpFBPsEMZxKTCnA+4fqDmg12eCTqGi6+BB2LjY8brQxJ" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"></script><script>
+                renderMathInElement(document.body,
+                    {
+                        
+delimiters: [
+    {left: "$$", right: "$$", display: true},
+    {left: "\\[", right: "\\]", display: true},
+    {left: "$", right: "$", display: false},
+    {left: "\\(", right: "\\)", display: false}
+]
+
+                    }
+                );
+            </script></footer></article>
+</div>
+</main><footer id="site-footer"><div class="container">
+            <p>Contents © 2021         <a href="mailto:ylxredbag@qq.com">yilanxuan</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         </p>
+            
+        </div>
+    </footer></main></body>
+</html>

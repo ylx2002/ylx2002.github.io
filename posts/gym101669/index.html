@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html prefix="" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>GYM 101669 乱做 | SUNRISE</title>
+<link href="../../assets/css/rst.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/code.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/theme.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="../../assets/css/main.css">
+<link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300%7CMontserrat:700" rel="stylesheet" type="text/css">
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+<script src="//code.jquery.com/jquery-1.10.2.min.js"></script><link href="../../assets/css/custom.css" rel="stylesheet" type="text/css">
+<meta name="theme-color" content="#5670d4">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
+<link rel="canonical" href="https://ylx2002.github.io/posts/gym101669/">
+<!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="yilanxuan">
+<link rel="prev" href="../gym101933/" title="GYM 101933 乱做" type="text/html">
+<link rel="next" href="../ZJOI2019/" title="余姚中学春游记" type="text/html">
+<meta property="og:site_name" content="SUNRISE">
+<meta property="og:title" content="GYM 101669 乱做">
+<meta property="og:url" content="https://ylx2002.github.io/posts/gym101669/">
+<meta property="og:description" content="两个人和一只兔子一起开的vp。
+
+
+gym 101669 2017-2018 ACM-ICPC Southeastern European Regional Programming Contest (SEERC 2017) 乱做
+tag : dp, 
+AG签到，CEHI没补。也不太可做。
+L 留坑明天填。
+A实际范围与题面范围不一样。
+B
+题意
+你有 $n$ 个盒子，$m$ 次操作，初始情况下 $">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2019-04-21T13:00:00+08:00">
+<meta property="article:tag" content="dfs序">
+<meta property="article:tag" content="dp">
+<meta property="article:tag" content="博弈">
+<meta property="article:tag" content="并查集">
+<meta property="article:tag" content="数据结构">
+<meta property="article:tag" content="构造">
+<meta property="article:tag" content="线段树">
+<meta property="article:tag" content="贪心">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" integrity="sha384-yFRtMMDnQtDRO8rLpMIKrtPCD5jdktao2TV19YiZYWMDkUR5GQZR/NOVTdquEx1j" crossorigin="anonymous">
+</head>
+<body><main><!--[if lt IE 7]><p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chrome/‎">install Google Chrome</a> to experience this site.</p><![endif]--><header id="site-header"><div class="container">
+            <h1 class="blog-title heading">SUNRISE</h1>
+            <p class="blog-description">We all wait for the sunrise.</p>
+        </div>
+        
+    <header id="header"><nav id="menu"><ul>
+<li><a href="../../">Home</a></li>
+                <li><a href="../../pages/about">About</a></li>
+                <li><a href="../../archive.html">Archive</a></li>
+                <li><a href="../../categories/">Categories</a></li>
+                <li><a href="../../pages/friends">Friends</a></li>
+
+    
+
+    
+    
+    </ul></nav></header></header><main class="content" role="main"><div class="container">
+
+            
+<article class="post"><header class="post-header"><h3 class="p-post-title">GYM 101669 乱做</h3>
+    </header><section class="post-content"><div>
+<p>两个人和一只兔子一起开的vp。</p>
+<!-- TEASER_END:  -->
+
+<p>gym 101669 2017-2018 ACM-ICPC Southeastern European Regional Programming Contest (SEERC 2017) 乱做</p>
+<p>tag : dp, </p>
+<p>AG签到，CEHI没补。<del>也不太可做。</del></p>
+<p>L 留坑明天填。</p>
+<p>A实际范围与题面范围不一样。</p>
+<h3>B</h3>
+<h4>题意</h4>
+<p>你有 $n$ 个盒子，$m$ 次操作，初始情况下 $n$ 个盒子都是空的。</p>
+<p>每次操作输入一个 $x$，表示在位置 $x$ 上方扔一个球下来。</p>
+<ol>
+<li>若位置 $x$ 为空，则直接落入位置 $x$ 上。</li>
+<li>否则随机往左边或者右边滚，直到到一个空的位置上。</li>
+</ol>
+<h4>做法</h4>
+<p>$f_i$ 表示目前有 $i$ 个空位置时候的方案数。</p>
+<p>设当前在位置 $i$ ，开个 $cnt$ 记空位置数。若 $cnt&lt;0$，则代表目前的 $i$ 个球不够放/恰好放。</p>
+<p>转移的话，就是两种情况，第一种是这个位置有球（即 $f_{cnt}$），第二种是这个位置是空的（即 $f_{cnt-1}$）。</p>
+<p>答案就是 $f_{cnt}$</p>
+<p><del>具体看代码。</del></p>
+<h4>代码</h4>
+<pre class="code literal-block"><span></span><code><span class="cp">#include</span> <span class="cpf">&lt;bits/stdc++.h&gt;</span><span class="cp"></span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="nn">std</span><span class="p">;</span>
+<span class="k">const</span> <span class="kt">int</span> <span class="n">mod</span> <span class="o">=</span> <span class="mf">1e9</span> <span class="o">+</span> <span class="mi">7</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">cnt</span><span class="p">,</span> <span class="n">f</span><span class="p">[</span><span class="mi">1000005</span><span class="p">],</span> <span class="n">sum</span><span class="p">[</span><span class="mi">1000005</span><span class="p">];</span>
+<span class="kt">void</span> <span class="nf">add</span><span class="p">(</span><span class="kt">int</span> <span class="o">&amp;</span><span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">val</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">x</span> <span class="o">+=</span> <span class="n">val</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="n">mod</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">-=</span> <span class="n">mod</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">scanf</span><span class="p">(</span><span class="s">"%d%d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">n</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">m</span><span class="p">);</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">m</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">x</span><span class="p">;</span>
+        <span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">x</span><span class="p">);</span>
+        <span class="n">sum</span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">f</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">cnt</span><span class="o">++</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">sum</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+            <span class="n">cnt</span> <span class="o">-=</span> <span class="n">sum</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+        <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">cnt</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="n">add</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="n">cnt</span><span class="p">],</span> <span class="n">f</span><span class="p">[</span><span class="n">cnt</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]);</span>
+    <span class="p">}</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">f</span><span class="p">[</span><span class="n">cnt</span><span class="p">]);</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+
+<h3>D</h3>
+<h4>题意</h4>
+<p>给出 $n$ 个向量，每个向量有 $m$ 维，$n$ 个向量中有且只有两维上是一，然后重载了加号运算符和乘号运算符，求最多的非线性相关的向量个数。</p>
+<h4>做法</h4>
+<p>开始前置技能不足+看漏条件。</p>
+<p>因为每个向量中有且只有两个1，那么可以想象答案最大肯定是 $m-1$ 因为分布肯定是这样的。（互不影响的要加起来）</p>
+<p><img alt="" src="https://images2018.cnblogs.com/blog/1459194/201808/1459194-20180818213040095-1120001774.png"></p>
+<h4>代码</h4>
+<pre class="code literal-block"><span></span><code><span class="k">const</span> <span class="kt">int</span> <span class="n">maxn</span> <span class="o">=</span> <span class="mf">1e5</span> <span class="o">+</span> <span class="mi">10</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">fa</span><span class="p">[</span><span class="n">maxn</span><span class="p">],</span> <span class="n">b</span><span class="p">[</span><span class="n">maxn</span><span class="p">];</span>
+<span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">sz</span><span class="p">[</span><span class="n">maxn</span><span class="p">],</span> <span class="n">ans</span><span class="p">;</span>
+<span class="kt">int</span> <span class="nf">gf</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">fa</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">==</span> <span class="n">x</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">x</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">fa</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="n">gf</span><span class="p">(</span><span class="n">fa</span><span class="p">[</span><span class="n">x</span><span class="p">]);</span>
+<span class="p">}</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">read</span><span class="p">(),</span> <span class="n">m</span> <span class="o">=</span> <span class="n">read</span><span class="p">();</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+        <span class="n">fa</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">x</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">k</span> <span class="o">=</span> <span class="n">read</span><span class="p">();</span>
+        <span class="k">while</span> <span class="p">(</span><span class="n">k</span><span class="o">--</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">read</span><span class="p">();</span>
+            <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">b</span><span class="p">[</span><span class="n">x</span><span class="p">])</span>
+                <span class="n">b</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+            <span class="k">else</span>
+            <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">gf</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="n">x</span><span class="p">])</span> <span class="o">!=</span> <span class="n">gf</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+                    <span class="n">fa</span><span class="p">[</span><span class="n">gf</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="n">x</span><span class="p">])]</span> <span class="o">=</span> <span class="n">gf</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+        <span class="n">sz</span><span class="p">[</span><span class="n">gf</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span><span class="o">++</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+        <span class="n">ans</span> <span class="o">+=</span> <span class="n">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">sz</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">ans</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+
+<h3>F</h3>
+<h4>题意</h4>
+<p>给出两个<code>01</code>串，每位有一个权值，然后要从$a$串变成$b$串，每换一次的花费是<strong>变之后</strong> <code>a</code>串中里面每一位是$1$的对应的权值和，求最小花费。</p>
+<p>$n\le 5\times 10^3 ,1\le c_i \le 10^9$</p>
+<h4>做法</h4>
+<p>先把 <code>1</code> 变成 <code>0</code> ，先变权值大的位置。</p>
+<p>然后再把 <code>0</code> 变成 <code>1</code>，先变权值较小的位置。</p>
+<p>然而你可以先把一些 <code>1</code> 变成 <code>0</code> 再变回来可能会更优。这些一定是权值最大的若干个（统一种变化类型中的）。</p>
+<p>$n\le 5\times 10^3$，所以我们可以枚举变化多少个，然后和扔到另外两种情况里面考虑。（和那些一起sort，然后考虑顺序）</p>
+<h4>代码</h4>
+<p>cxr写的。</p>
+<pre class="code literal-block"><span></span><code><span class="k">typedef</span> <span class="kt">long</span> <span class="kt">long</span> <span class="n">ll</span><span class="p">;</span>
+<span class="k">const</span> <span class="kt">int</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">5005</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">n</span><span class="p">;</span>
+<span class="n">ll</span> <span class="n">ans</span> <span class="o">=</span> <span class="p">(</span><span class="n">ll</span><span class="p">)</span><span class="mf">1e18</span><span class="p">,</span> <span class="n">sum</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">w</span><span class="p">[</span><span class="n">N</span><span class="p">];</span>
+<span class="kt">char</span> <span class="n">a</span><span class="p">[</span><span class="n">N</span><span class="p">],</span> <span class="n">b</span><span class="p">[</span><span class="n">N</span><span class="p">];</span>
+<span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">p</span><span class="p">;</span>
+<span class="n">multiset</span><span class="o">&lt;</span><span class="n">ll</span><span class="o">&gt;</span> <span class="n">s0</span><span class="p">,</span> <span class="n">s1</span><span class="p">;</span>
+<span class="n">multiset</span><span class="o">&lt;</span><span class="n">ll</span><span class="o">&gt;::</span><span class="n">iterator</span> <span class="n">it1</span><span class="p">;</span>
+<span class="n">multiset</span><span class="o">&lt;</span><span class="n">ll</span><span class="o">&gt;::</span><span class="n">reverse_iterator</span> <span class="n">it2</span><span class="p">;</span>
+<span class="kr">inline</span> <span class="kt">void</span> <span class="nf">solve</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">ll</span> <span class="n">res</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="n">sum</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">it2</span> <span class="o">=</span> <span class="n">s0</span><span class="p">.</span><span class="n">rbegin</span><span class="p">();</span> <span class="n">it2</span> <span class="o">!=</span> <span class="n">s0</span><span class="p">.</span><span class="n">rend</span><span class="p">();</span> <span class="o">++</span><span class="n">it2</span><span class="p">)</span>
+        <span class="n">s</span> <span class="o">-=</span> <span class="p">(</span><span class="o">*</span><span class="n">it2</span><span class="p">),</span> <span class="n">res</span> <span class="o">+=</span> <span class="n">s</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">it1</span> <span class="o">=</span> <span class="n">s1</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span> <span class="n">it1</span> <span class="o">!=</span> <span class="n">s1</span><span class="p">.</span><span class="n">end</span><span class="p">();</span> <span class="o">++</span><span class="n">it1</span><span class="p">)</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="p">(</span><span class="o">*</span><span class="n">it1</span><span class="p">),</span> <span class="n">res</span> <span class="o">+=</span> <span class="n">s</span><span class="p">;</span>
+    <span class="n">ans</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">ans</span><span class="p">,</span> <span class="n">res</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">read</span><span class="p">();</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+        <span class="n">w</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">read</span><span class="p">();</span>
+    <span class="n">scanf</span><span class="p">(</span><span class="s">"%s"</span><span class="p">,</span> <span class="n">a</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="n">scanf</span><span class="p">(</span><span class="s">"%s"</span><span class="p">,</span> <span class="n">b</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="sc">'1'</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">sum</span> <span class="o">+=</span> <span class="n">w</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+                <span class="n">p</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">w</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+            <span class="k">else</span>
+                <span class="n">s0</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">w</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+        <span class="p">}</span>
+        <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="sc">'1'</span><span class="p">)</span>
+            <span class="n">s1</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">w</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+    <span class="p">}</span>
+    <span class="n">sort</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">p</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
+    <span class="n">reverse</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">p</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
+    <span class="n">solve</span><span class="p">();</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">sz</span> <span class="o">=</span> <span class="n">p</span><span class="p">.</span><span class="n">size</span><span class="p">();</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">sz</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">s0</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span> <span class="n">s1</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+        <span class="n">solve</span><span class="p">();</span>
+    <span class="p">}</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%lld</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">ans</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+
+<h3>J</h3>
+<h4>题意</h4>
+<p>有 $n$ 堆石头，第 $i$ 堆有 $a_i$ 个。</p>
+<p>A先取，每次从一堆中取的数量不等于 $0$，然后B和C取，无法操作者输。</p>
+<p>B和C想让A输，假设每个人的决策都是最佳的，求A是必败还是必输。</p>
+<p>$n\le 10^5$</p>
+<h4>做法</h4>
+<p>考虑多种情况。</p>
+<p>全是1的情况。</p>
+<p>每次每个人取走一堆，当$n\mod 3=0$ 的时候A会输，否则胜。</p>
+<p>只有一个不是1的情况。</p>
+<p>可以根据 $n\mod 3$ 来让A决定，是将不为1的一堆变成1，还是直接删掉这一堆，所以A必胜。</p>
+<p>有两个不是1的情况。</p>
+<p>如果留了一个石子个数 $&gt;2$ 的堆，那么后手两个人可以同时控制这堆石子，所以肯定是给后手留一个大小为2石子。但是如果 $n\mod 3=2$ 的情况下，后手可以通过是取走一堆石子还是两堆石子来使先手必败。 </p>
+<p>其他情况后手一定可以通过一些操作让先手必败。</p>
+<h4>代码</h4>
+<pre class="code literal-block"><span></span><code><span class="k">typedef</span> <span class="kt">long</span> <span class="kt">long</span> <span class="n">ll</span><span class="p">;</span>
+<span class="k">const</span> <span class="kt">int</span> <span class="n">N</span> <span class="o">=</span> <span class="mf">1e5</span> <span class="o">+</span> <span class="mi">5</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">q</span><span class="p">;</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">read</span><span class="p">();</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="n">read</span><span class="p">();</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="o">++</span><span class="n">p</span><span class="p">;</span>
+        <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span>
+            <span class="o">++</span><span class="n">q</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">p</span> <span class="o">==</span> <span class="n">n</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">%</span> <span class="mi">3</span><span class="p">)</span>
+            <span class="n">puts</span><span class="p">(</span><span class="s">"Win"</span><span class="p">);</span>
+        <span class="k">else</span>
+            <span class="n">puts</span><span class="p">(</span><span class="s">"Lose"</span><span class="p">);</span>
+        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">p</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">==</span> <span class="n">n</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">puts</span><span class="p">(</span><span class="s">"Win"</span><span class="p">);</span>
+        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">p</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">==</span> <span class="n">n</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">q</span> <span class="o">&amp;&amp;</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">)</span>
+            <span class="n">puts</span><span class="p">(</span><span class="s">"Win"</span><span class="p">);</span>
+        <span class="k">else</span>
+            <span class="n">puts</span><span class="p">(</span><span class="s">"Lose"</span><span class="p">);</span>
+        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">puts</span><span class="p">(</span><span class="s">"Lose"</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+
+<h3>K</h3>
+<h4>题意</h4>
+<p>有一个长度为 $n$ 的序列，里面的数是 $1-n$ 。</p>
+<p>然后给出每一位以当前位为队头的最长上升子序列长度$a_i$，还原原序列，多个答案输出字典序最小的那个。</p>
+<p>$n\le 10^5$。</p>
+<h4>做法</h4>
+<p>我们按照 $a_i$ 分层，设每个位置权值为 $b_i$ 。</p>
+<p>因为题目保证有解，所以有一种合法的方案，就是 $a_i$ 小的放尽量大的数 。</p>
+<p>多个位置 $a_i$ 相同时，位置靠前的分配较大的 。</p>
+<p>这样一定是正确的。</p>
+<ol>
+<li>对于$a_i&gt;1$，一定可以找到位置 $j&gt;i$ ，满足 $a_j=a_i-1$ 且 $b_j&gt;b_i$ 。</li>
+<li>其他的合法方案，若要将 $b_i$ 变小，则必须考虑一个位置 $j&lt; i$ 将 $b_j$ 变大，这样一定不优。</li>
+<li>若 $a_i=1$，则后面不能出现比它大的数，则要么变前面的数，要么不存在这样的操作，所以会更劣。</li>
+</ol>
+<p><del>证明随便看看就好。</del></p>
+<h4>代码</h4>
+<pre class="code literal-block"><span></span><code><span class="k">const</span> <span class="kt">int</span> <span class="n">maxn</span> <span class="o">=</span> <span class="mf">1e5</span> <span class="o">+</span> <span class="mi">10</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="n">a</span><span class="p">[</span><span class="n">maxn</span><span class="p">];</span>
+<span class="kt">int</span> <span class="n">cnt</span><span class="p">[</span><span class="n">maxn</span><span class="p">],</span><span class="n">Max</span><span class="p">;</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">read</span><span class="p">();</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">read</span><span class="p">();</span>
+        <span class="n">cnt</span><span class="p">[</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="o">++</span><span class="p">;</span>
+        <span class="n">qmax</span><span class="p">(</span><span class="n">Max</span><span class="p">,</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+    <span class="p">}</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">Max</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span><span class="o">--</span><span class="p">)</span>
+        <span class="n">cnt</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="n">cnt</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">];</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"%d "</span><span class="p">,</span> <span class="n">cnt</span><span class="p">[</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="o">--</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+
+<h3>L</h3>
+<h4>题意</h4>
+<p>给你两棵树构成的图，问</p>
+<p>1.至少要删去多少条边使其变成至少两个联通块。
+2.求方案数。</p>
+<p>$n\le 10^5$</p>
+<h4>做法</h4>
+<p>可以发现第一问答案为 2 或者 3 。</p>
+<p>证：因为需要在两棵树上都断开，所以至少为 2 。</p>
+<p>若答案为 4，则需要有边 $\frac{4n}{2}=2n$ 条。</p>
+<p>所以只有两种情况。</p>
+<p>一定是在一棵树删一条边，另一棵树上删1～2条边。</p>
+<p>大致思路：枚举在一棵树上断开哪条边，将这棵树分成两个联通块，看在另一颗树上这两个联通块之间有多少条边。</p>
+<p>具体操作：相当于dfs一棵树，另外一棵树当作标记挂在每个端点和LCA处，两个端点处 <code>+1</code>，LCA 处 <code>-2</code>。</p>
+<p>每次判断一个点和其父亲的连边是否可以删除。</p>
+<p>若一棵子树的权值和+1=第一问的答案，则答案+1（根节点因为没有父亲不能算）</p>
+<p>注意：答案为2的时候只需要算一次。</p>
+<p>dfs序 + 线段树即可。</p>
+<h4>代码</h4>
+<p>暂时性的咕咕咕了。</p>
+</div>
+ </section><hr>
+<footer class="post-footer"><section class="f-1"><section class="author"><p>
+                yilanxuan
+            </p></section><p class="f-post-time"><time datetime="2019-04-21T13:00:00+08:00">2019-04-21 13:00</time></p>
+        </section><section class="f-2"><section class="share"><span>Share:
+                <a class="icon-twitter" href="http://twitter.com/share?text=GYM+101669+%E4%B9%B1%E5%81%9A&amp;url=https%3A%2F%2Fylx2002.github.io%2Fposts%2Fgym101669%2F" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <i class="fa fa-twitter"></i>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fylx2002.github.io%2Fposts%2Fgym101669%2F" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <i class="fa fa-facebook"></i>
+                </a>
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=https%3A%2F%2Fylx2002.github.io%2Fposts%2Fgym101669%2F" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <i class="fa fa-google-plus"></i>
+                </a>
+                </span>
+            </section></section><script src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.js" integrity="sha384-9Nhn55MVVN0/4OFx7EE5kpFBPsEMZxKTCnA+4fqDmg12eCTqGi6+BB2LjY8brQxJ" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"></script><script>
+                renderMathInElement(document.body,
+                    {
+                        
+delimiters: [
+    {left: "$$", right: "$$", display: true},
+    {left: "\\[", right: "\\]", display: true},
+    {left: "$", right: "$", display: false},
+    {left: "\\(", right: "\\)", display: false}
+]
+
+                    }
+                );
+            </script></footer></article>
+</div>
+</main><footer id="site-footer"><div class="container">
+            <p>Contents © 2021         <a href="mailto:ylxredbag@qq.com">yilanxuan</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         </p>
+            
+        </div>
+    </footer></main></body>
+</html>

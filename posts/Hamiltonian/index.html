@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html prefix="" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>哈密尔顿问题 | SUNRISE</title>
+<link href="../../assets/css/rst.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/code.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/theme.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="../../assets/css/main.css">
+<link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300%7CMontserrat:700" rel="stylesheet" type="text/css">
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+<script src="//code.jquery.com/jquery-1.10.2.min.js"></script><link href="../../assets/css/custom.css" rel="stylesheet" type="text/css">
+<meta name="theme-color" content="#5670d4">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
+<link rel="canonical" href="https://ylx2002.github.io/posts/Hamiltonian/">
+<!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="yilanxuan">
+<link rel="prev" href="../2019GCJ1C/" title="Google Code Jam Round 1C 翻车记" type="text/html">
+<link rel="next" href="../NOI2015/" title="NOI2015 补题" type="text/html">
+<meta property="og:site_name" content="SUNRISE">
+<meta property="og:title" content="哈密尔顿问题">
+<meta property="og:url" content="https://ylx2002.github.io/posts/Hamiltonian/">
+<meta property="og:description" content="刚好写到一个和有关的构造题
+这个问题可以归约到哈密顿回路这一个著名的  NP-complete 问题。
+
+
+传送门
+Bondy–Chvátal 定理
+Bondy–Chvátal theorem operates on the closure cl(G) of a graph G with n vertices, obtained by repeatedly adding a new edge uv">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2019-05-06T21:30:00+08:00">
+<meta property="article:tag" content="图论">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" integrity="sha384-yFRtMMDnQtDRO8rLpMIKrtPCD5jdktao2TV19YiZYWMDkUR5GQZR/NOVTdquEx1j" crossorigin="anonymous">
+</head>
+<body><main><!--[if lt IE 7]><p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chrome/‎">install Google Chrome</a> to experience this site.</p><![endif]--><header id="site-header"><div class="container">
+            <h1 class="blog-title heading">SUNRISE</h1>
+            <p class="blog-description">We all wait for the sunrise.</p>
+        </div>
+        
+    <header id="header"><nav id="menu"><ul>
+<li><a href="../../">Home</a></li>
+                <li><a href="../../pages/about">About</a></li>
+                <li><a href="../../archive.html">Archive</a></li>
+                <li><a href="../../categories/">Categories</a></li>
+                <li><a href="../../pages/friends">Friends</a></li>
+
+    
+
+    
+    
+    </ul></nav></header></header><main class="content" role="main"><div class="container">
+
+            
+<article class="post"><header class="post-header"><h3 class="p-post-title">哈密尔顿问题</h3>
+    </header><section class="post-content"><div>
+<p>刚好写到一个和有关的构造题</p>
+<p>这个问题可以归约到哈密顿回路这一个著名的  NP-complete 问题。</p>
+<!-- TEASER_END:  -->
+
+<p><a href="https://en.wikipedia.org/wiki/Hamiltonian_path">传送门</a></p>
+<h3>Bondy–Chvátal 定理</h3>
+<p>Bondy–Chvátal theorem operates on the closure cl(G) of a graph G with n vertices, obtained by repeatedly adding a new edge uv connecting a nonadjacent pair of vertices u and v with degree(v) + degree(u) ≥ n until no more pairs with this property can be found.</p>
+<p>每次选择两个点满足 degree(v) + degree(u) ≥ N 连边，直到不存在。</p>
+<h3>Dirac 定理</h3>
+<p>A simple graph with n vertices (n ≥ 3) is Hamiltonian if every vertex has degree n / 2 or greater.</p>
+<p>设一个无向图中有 N(N&gt;=3) 个节点，若所有节点的度数都大于等于 N/2 ，则哈密尔顿回路一定存在。</p>
+<h3>Ore 定理</h3>
+<p>Let $G$ be a (finite and simple) graph with $n \ge 3$ vertices. We denote by deg $v$ the degree of a vertex $v$ in $G$, i.e. the number of incident edges in $G$ to v. Then, Ore's theorem states that if</p>
+<p>$deg_v + deg_w \ge n$ for every pair of distinct non-adjacent vertices $v$ and $w$ of $G$</p>
+<p>then $G$ is Hamiltonian.</p>
+<p>如果每对不相邻的点的度数和&gt;=N，那么这个图存在密尔顿回路。</p>
+<h3>Landau 定理</h3>
+<p>竞赛图必有哈密尔顿路径</p>
+<p>竞赛图有哈密尔顿回路 ⇔ 竞赛图强联通</p>
+<p>证明：考虑反证法，假如不存在哈密尔顿路径，那么我们一定能够找到这个图的最长路径，起点为 s,终点为 t。</p>
+<p>假设存在一个点 p 不在这条最长路径中，那么一定存在边 (s,p) (p,t)</p>
+<p>最长路上一定存在相邻的边(x,y)满足存在边(x,p)(p,y)(包括点s和点t)，所以最长路必须包括点 p 。</p>
+<h3>题目</h3>
+<p>Please contact lydsy2012@163.com!</p>
+<p>BZOJ 4727: [POI2017]Turysta</p>
+<p><del>说不定拿天就出一道出来玩玩。</del></p>
+<h3>代码</h3>
+<p>留坑。</p>
+<h3>参考</h3>
+<p>https://www.xuebuyuan.com/3203762.html</p>
+<p>https://blog.csdn.net/a_crazy_czy/article/details/73611366</p>
+<p>https://en.wikipedia.org/wiki/Hamiltonian_path</p>
+</div>
+ </section><hr>
+<footer class="post-footer"><section class="f-1"><section class="author"><p>
+                yilanxuan
+            </p></section><p class="f-post-time"><time datetime="2019-05-06T21:30:00+08:00">2019-05-06 21:30</time></p>
+        </section><section class="f-2"><section class="share"><span>Share:
+                <a class="icon-twitter" href="http://twitter.com/share?text=%E5%93%88%E5%AF%86%E5%B0%94%E9%A1%BF%E9%97%AE%E9%A2%98&amp;url=https%3A%2F%2Fylx2002.github.io%2Fposts%2FHamiltonian%2F" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <i class="fa fa-twitter"></i>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fylx2002.github.io%2Fposts%2FHamiltonian%2F" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <i class="fa fa-facebook"></i>
+                </a>
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=https%3A%2F%2Fylx2002.github.io%2Fposts%2FHamiltonian%2F" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <i class="fa fa-google-plus"></i>
+                </a>
+                </span>
+            </section></section><script src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.js" integrity="sha384-9Nhn55MVVN0/4OFx7EE5kpFBPsEMZxKTCnA+4fqDmg12eCTqGi6+BB2LjY8brQxJ" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"></script><script>
+                renderMathInElement(document.body,
+                    {
+                        
+delimiters: [
+    {left: "$$", right: "$$", display: true},
+    {left: "\\[", right: "\\]", display: true},
+    {left: "$", right: "$", display: false},
+    {left: "\\(", right: "\\)", display: false}
+]
+
+                    }
+                );
+            </script></footer></article>
+</div>
+</main><footer id="site-footer"><div class="container">
+            <p>Contents © 2021         <a href="mailto:ylxredbag@qq.com">yilanxuan</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         </p>
+            
+        </div>
+    </footer></main></body>
+</html>

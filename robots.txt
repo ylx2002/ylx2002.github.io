@@ -1,0 +1,4 @@
+Sitemap: https://ylx2002.github.io/sitemapindex.xml
+
+User-Agent: *
+Host: ylx2002.github.io
