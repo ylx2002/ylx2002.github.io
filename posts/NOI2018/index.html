@@ -77,7 +77,7 @@ bool cmp(node1 aa, node1 bb)
 <p><a href="https://www.luogu.org/fe/problem/list?tag=77%7C35&amp;page=1">传送门</a></p>
 <h3>归程</h3>
 <p>其实很模板，Kruskal 重构树</p>
-<pre class="code literal-block"><span class="k">const</span> <span class="kt">int</span> <span class="n">maxn</span> <span class="o">=</span> <span class="mf">2e5</span> <span class="o">+</span> <span class="mi">100</span><span class="p">;</span>
+<pre class="code literal-block"><span></span><code><span class="k">const</span> <span class="kt">int</span> <span class="n">maxn</span> <span class="o">=</span> <span class="mf">2e5</span> <span class="o">+</span> <span class="mi">100</span><span class="p">;</span>
 <span class="k">const</span> <span class="kt">int</span> <span class="n">maxm</span> <span class="o">=</span> <span class="mf">4e5</span> <span class="o">+</span> <span class="mi">100</span><span class="p">;</span>
 <span class="kt">int</span> <span class="n">T</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">Q1</span><span class="p">;</span>
 <span class="k">struct</span> <span class="nc">node1</span>
@@ -212,7 +212,8 @@ bool cmp(node1 aa, node1 bb)
     <span class="p">}</span>
     <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
-</pre>
+</code></pre>
+
 <h3>冒泡排序</h3>
 <p>$f_{i,j}$ 表示填了 $i$ 个位置后，最大的数是 $j$ 到达最终状态的方案数。初始状态：$f_{n,n}=1$</p>
 <p>$$
@@ -224,7 +225,7 @@ $$</p>
 <p>$$
 F_{i,j}=[i-1\ge j] F_{i-1,j}+F_{i,j-1}
 $$</p>
-<p>发现是<code>Catalan</code> 数</p>
+<p>发现是<code>Catalan</code> 数   </p>
 <p>$$
 F_{i,j}={i+j\choose j}-{i+j\choose j-1}
 $$</p>
@@ -246,7 +247,7 @@ $$</p>
 <p>$$
 {2n-i-p+1\choose n-p}-{2n-i-p+1\choose n-p-1}
 $$</p>
-<pre class="code literal-block"><span class="k">const</span> <span class="kt">int</span> <span class="n">maxn</span> <span class="o">=</span> <span class="mf">1e6</span> <span class="o">+</span> <span class="mf">2e5</span> <span class="o">+</span> <span class="mi">100</span><span class="p">;</span>
+<pre class="code literal-block"><span></span><code><span class="k">const</span> <span class="kt">int</span> <span class="n">maxn</span> <span class="o">=</span> <span class="mf">1e6</span> <span class="o">+</span> <span class="mf">2e5</span> <span class="o">+</span> <span class="mi">100</span><span class="p">;</span>
 <span class="k">const</span> <span class="n">ll</span> <span class="n">mod</span> <span class="o">=</span> <span class="mi">998244353</span><span class="p">;</span>
 <span class="kt">int</span> <span class="n">T</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">_m</span><span class="p">;</span>
 <span class="kt">int</span> <span class="n">a</span><span class="p">[</span><span class="n">maxn</span><span class="p">],</span> <span class="n">vis</span><span class="p">[</span><span class="n">maxn</span><span class="p">];</span>
@@ -313,10 +314,11 @@ $$</p>
     <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 <span class="c1">//2019年 06月 17日 星期一 15:48:43 CST</span>
-</pre>
+</code></pre>
+
 <h3>你的名字</h3>
 <p>线段树合并维护right数组。</p>
-<pre class="code literal-block"><span class="k">namespace</span> <span class="nn">ST</span>
+<pre class="code literal-block"><span></span><code><span class="k">namespace</span> <span class="nn">ST</span>
 <span class="p">{</span>
 <span class="k">const</span> <span class="kt">int</span> <span class="n">maxn</span> <span class="o">=</span> <span class="mf">3e7</span> <span class="o">+</span> <span class="mi">100</span><span class="p">;</span>
 <span class="kt">int</span> <span class="n">l</span><span class="p">[</span><span class="n">maxn</span><span class="p">],</span> <span class="n">r</span><span class="p">[</span><span class="n">maxn</span><span class="p">],</span> <span class="n">rt</span><span class="p">[</span><span class="n">maxn</span><span class="p">],</span> <span class="n">cnt</span><span class="p">;</span>
@@ -480,7 +482,7 @@ $$</p>
         <span class="n">slove</span><span class="p">();</span>
     <span class="p">}</span>
 <span class="p">}</span>
-</pre>
+</code></pre>
 </div>
  </section><hr>
 <footer class="post-footer"><section class="f-1"><section class="author"><p>
