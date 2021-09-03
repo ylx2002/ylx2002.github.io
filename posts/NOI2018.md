@@ -175,7 +175,7 @@ $$
 F\_{i,j}=[i-1\ge j] F\_{i-1,j}+F\_{i,j-1}
 $$
 
-发现是`Catalan` 数
+发现是`Catalan` 数   
 
 $$
 F\_{i,j}={i+j\choose j}-{i+j\choose j-1}
