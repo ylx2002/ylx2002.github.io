@@ -6,6 +6,18 @@
     xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <sitemap>
+  <loc>https://ylx2002.github.io/categories/01trie.xml</loc>
+  <lastmod>2021-10-04T03:15:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>https://ylx2002.github.io/categories/bao-li.xml</loc>
+  <lastmod>2021-10-04T03:15:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>https://ylx2002.github.io/categories/bei-zeng.xml</loc>
+  <lastmod>2021-10-04T03:15:00Z</lastmod>
+ </sitemap>
+ <sitemap>
   <loc>https://ylx2002.github.io/categories/bing-cha-ji.xml</loc>
   <lastmod>2021-06-22T06:15:00Z</lastmod>
  </sitemap>
@@ -15,7 +27,7 @@
  </sitemap>
  <sitemap>
   <loc>https://ylx2002.github.io/categories/cat_oi.xml</loc>
-  <lastmod>2021-08-01T04:26:00Z</lastmod>
+  <lastmod>2021-10-04T03:15:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ylx2002.github.io/categories/cat_sui-sui-nian.xml</loc>
@@ -23,7 +35,7 @@
  </sitemap>
  <sitemap>
   <loc>https://ylx2002.github.io/categories/cat_xue-xi.xml</loc>
-  <lastmod>2021-08-01T04:26:00Z</lastmod>
+  <lastmod>2021-09-03T05:59:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ylx2002.github.io/categories/dfsxu.xml</loc>
@@ -31,7 +43,7 @@
  </sitemap>
  <sitemap>
   <loc>https://ylx2002.github.io/categories/dp.xml</loc>
-  <lastmod>2021-08-01T04:26:00Z</lastmod>
+  <lastmod>2021-10-04T03:15:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ylx2002.github.io/categories/er-fen.xml</loc>
@@ -48,6 +60,10 @@
  <sitemap>
   <loc>https://ylx2002.github.io/categories/jiao-hu.xml</loc>
   <lastmod>2021-06-22T06:15:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>https://ylx2002.github.io/categories/mo-dui.xml</loc>
+  <lastmod>2021-10-04T03:15:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ylx2002.github.io/categories/mo-ni.xml</loc>
@@ -70,8 +86,12 @@
   <lastmod>2021-06-22T06:15:00Z</lastmod>
  </sitemap>
  <sitemap>
+  <loc>https://ylx2002.github.io/categories/shu-pou.xml</loc>
+  <lastmod>2021-10-04T03:15:00Z</lastmod>
+ </sitemap>
+ <sitemap>
   <loc>https://ylx2002.github.io/categories/si-wei.xml</loc>
-  <lastmod>2021-06-22T06:15:00Z</lastmod>
+  <lastmod>2021-10-04T03:15:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ylx2002.github.io/categories/sou-suo.xml</loc>
@@ -91,7 +111,7 @@
  </sitemap>
  <sitemap>
   <loc>https://ylx2002.github.io/categories/xian-duan-shu.xml</loc>
-  <lastmod>2021-08-01T04:26:00Z</lastmod>
+  <lastmod>2021-10-04T03:15:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ylx2002.github.io/categories/zhong-gou-shu.xml</loc>
@@ -103,11 +123,11 @@
  </sitemap>
  <sitemap>
   <loc>https://ylx2002.github.io/categories/zi-fu-chuan.xml</loc>
-  <lastmod>2021-08-01T04:26:00Z</lastmod>
+  <lastmod>2021-10-04T03:15:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ylx2002.github.io/categories/zu-he.xml</loc>
-  <lastmod>2021-08-01T04:26:00Z</lastmod>
+  <lastmod>2021-10-04T03:15:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ylx2002.github.io/categories/zui-duan-lu.xml</loc>
@@ -119,10 +139,10 @@
  </sitemap>
  <sitemap>
   <loc>https://ylx2002.github.io/rss.xml</loc>
-  <lastmod>2021-08-01T04:26:00Z</lastmod>
+  <lastmod>2021-10-04T03:15:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ylx2002.github.io/sitemap.xml</loc>
-  <lastmod>2021-08-01T04:26:00Z</lastmod>
+  <lastmod>2021-10-04T03:15:00Z</lastmod>
  </sitemap>
 </sitemapindex>

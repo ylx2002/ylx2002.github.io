@@ -23,11 +23,23 @@
  </url>
  <url>
   <loc>https://ylx2002.github.io/archive.html</loc>
-  <lastmod>2021-08-01T04:26:00Z</lastmod>
+  <lastmod>2021-09-08T04:01:00Z</lastmod>
  </url>
  <url>
   <loc>https://ylx2002.github.io/categories/</loc>
-  <lastmod>2021-08-01T04:26:00Z</lastmod>
+  <lastmod>2021-10-04T03:15:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://ylx2002.github.io/categories/01trie/</loc>
+  <lastmod>2021-10-04T03:15:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://ylx2002.github.io/categories/bao-li/</loc>
+  <lastmod>2021-09-08T04:01:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://ylx2002.github.io/categories/bei-zeng/</loc>
+  <lastmod>2021-09-28T06:00:00Z</lastmod>
  </url>
  <url>
   <loc>https://ylx2002.github.io/categories/bing-cha-ji/</loc>
@@ -74,6 +86,10 @@
   <lastmod>2021-06-22T06:15:00Z</lastmod>
  </url>
  <url>
+  <loc>https://ylx2002.github.io/categories/mo-dui/</loc>
+  <lastmod>2021-09-08T04:01:00Z</lastmod>
+ </url>
+ <url>
   <loc>https://ylx2002.github.io/categories/mo-ni/</loc>
   <lastmod>2021-06-22T06:15:00Z</lastmod>
  </url>
@@ -92,6 +108,10 @@
  <url>
   <loc>https://ylx2002.github.io/categories/shu-lun/</loc>
   <lastmod>2021-06-22T06:15:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://ylx2002.github.io/categories/shu-pou/</loc>
+  <lastmod>2021-09-28T06:00:00Z</lastmod>
  </url>
  <url>
   <loc>https://ylx2002.github.io/categories/si-wei/</loc>
@@ -143,7 +163,7 @@
  </url>
  <url>
   <loc>https://ylx2002.github.io/index-1.html</loc>
-  <lastmod>2021-08-01T04:26:00Z</lastmod>
+  <lastmod>2021-09-08T04:01:00Z</lastmod>
  </url>
  <url>
   <loc>https://ylx2002.github.io/listings/</loc>
@@ -168,6 +188,10 @@
  <url>
   <loc>https://ylx2002.github.io/posts/2019GCJ1C/</loc>
   <lastmod>2021-06-22T06:15:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://ylx2002.github.io/posts/202109training/</loc>
+  <lastmod>2021-09-08T04:01:00Z</lastmod>
  </url>
  <url>
   <loc>https://ylx2002.github.io/posts/2021summer/</loc>
