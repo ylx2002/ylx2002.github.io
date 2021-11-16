@@ -27,7 +27,7 @@
  </sitemap>
  <sitemap>
   <loc>https://ylx2002.github.io/categories/cat_oi.xml</loc>
-  <lastmod>2021-10-04T03:15:00Z</lastmod>
+  <lastmod>2021-11-16T09:04:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ylx2002.github.io/categories/cat_sui-sui-nian.xml</loc>
@@ -43,11 +43,15 @@
  </sitemap>
  <sitemap>
   <loc>https://ylx2002.github.io/categories/dp.xml</loc>
-  <lastmod>2021-10-04T03:15:00Z</lastmod>
+  <lastmod>2021-11-16T09:04:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ylx2002.github.io/categories/er-fen.xml</loc>
   <lastmod>2021-06-22T06:15:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>https://ylx2002.github.io/categories/floyd.xml</loc>
+  <lastmod>2021-11-16T09:04:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ylx2002.github.io/categories/gou-zao.xml</loc>
@@ -91,7 +95,7 @@
  </sitemap>
  <sitemap>
   <loc>https://ylx2002.github.io/categories/si-wei.xml</loc>
-  <lastmod>2021-10-04T03:15:00Z</lastmod>
+  <lastmod>2021-11-16T09:04:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ylx2002.github.io/categories/sou-suo.xml</loc>
@@ -103,7 +107,7 @@
  </sitemap>
  <sitemap>
   <loc>https://ylx2002.github.io/categories/tu-lun.xml</loc>
-  <lastmod>2021-08-01T04:26:00Z</lastmod>
+  <lastmod>2021-11-16T09:04:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ylx2002.github.io/categories/xian-duan-shu-he-bing.xml</loc>
@@ -131,7 +135,7 @@
  </sitemap>
  <sitemap>
   <loc>https://ylx2002.github.io/categories/zui-duan-lu.xml</loc>
-  <lastmod>2021-06-22T06:15:00Z</lastmod>
+  <lastmod>2021-11-16T09:04:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ylx2002.github.io/galleries/rss.xml</loc>
@@ -139,10 +143,10 @@
  </sitemap>
  <sitemap>
   <loc>https://ylx2002.github.io/rss.xml</loc>
-  <lastmod>2021-10-04T03:15:00Z</lastmod>
+  <lastmod>2021-11-16T09:04:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ylx2002.github.io/sitemap.xml</loc>
-  <lastmod>2021-10-04T03:15:00Z</lastmod>
+  <lastmod>2021-11-16T09:04:00Z</lastmod>
  </sitemap>
 </sitemapindex>
